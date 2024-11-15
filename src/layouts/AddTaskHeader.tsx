@@ -3,18 +3,29 @@ import Button from "../components/Button";
 import Input from "../components/Input";
 
 const AddTaskHeader = () => {
-  const [todoVal, setTodoVal] = useState("");
+  const [todoTitle, setTodoTitle] = useState("");
+  const [todoDescription, setTodoDescription] = useState("");
+
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex flex-col md:my-5">
       <Input
-        className="basis-[90%] text-sm font-semibold border p-2 md:text-md"
-        onChange={(e) => setTodoVal(e.target.value)}
+        className="text-sm font-semibold border p-2 md:text-md"
+        onChange={(e) => setTodoTitle(e.target.value)}
         type="text"
-        value={todoVal}
+        maxLength={20}
+        value={todoTitle}
         placeholder="Type in a task"
       />
+      <Input
+        className="text-sm font-semibold border p-2 my-4 md:text-md"
+        onChange={(e) => setTodoDescription(e.target.value)}
+        type="text"
+        maxLength={32}
+        value={todoDescription}
+        placeholder="Type in description"
+      />
       <Button
-        className="bg-orange-400 text-white text-nowrap"
+        className="bg-orange-600 text-white text-nowrap transition-all duration-[250ms] hover:bg-white hover:border-orange-600 hover:text-orange-600"
         onClick={() => console.log("Add task button")}
         type="button"
       >

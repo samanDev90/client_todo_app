@@ -1,26 +1,30 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { FaCheck, FaEdit, FaTrash } from "react-icons/fa";
 
 interface TodoTypes {
   title: string;
   description: string;
+  onClick(): void;
 }
 
-const Todo: FC<TodoTypes> = () => {
+const Todo: FC<TodoTypes> = ({ title, description, onClick }) => {
   const [isCrossed, setIsCrossed] = useState(false);
+
   return (
-    <div className="flex mt-4 p-5 justify-between items-center bg-white border-2 border-slate-300">
+    <div
+      onClick={onClick}
+      className="flex mt-4 p-5 justify-between items-center bg-white border-2 border-slate-300"
+    >
       <div>
         <h2 className={`${isCrossed && "line-through"} text-md md:text-lg`}>
-          Go to grocery shopping
+          {title}
         </h2>
         <p
           className={`${
             isCrossed && "line-through"
           }  text-sm text-ellipsis overflow-hidden md:text-nowrap md:text-md`}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-          distinctio!
+          {description}
         </p>
       </div>
       <div className="flex justify-between items-center ml-2 md:ml-0">

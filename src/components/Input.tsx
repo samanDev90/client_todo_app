@@ -5,6 +5,8 @@ interface InputTypes {
   className?: string;
   value: string;
   type: "text" | "number" | "email" | "password";
+  placeholder: string;
+  maxLength?: number;
 }
 
 const Input: FC<InputTypes> = ({ ...args }) => {
